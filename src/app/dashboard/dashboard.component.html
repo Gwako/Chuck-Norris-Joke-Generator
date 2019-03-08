@@ -1,0 +1,49 @@
+<div class="container-fluid">
+<div class="row">
+ <div class="col-md-9">
+<div class="card" id="card" *ngIf="joke">
+        <a target="_blank" href={{joke.icon_url}}>
+            <img class="card-img-top" src= {{joke.icon_url}} alt="Card image cap" style="width:150px">
+            </a>
+        <h3>Joke of the day</h3>
+        <p>{{joke.value}}</p>
+        <p><a (click)="refreshJoke()"><button>Generate New</button></a></p>
+        <!-- Social media icons -->
+          <p>
+            <share-buttons [theme]="'circles-dark'"
+            [include]="['facebook','twitter','whatsapp','linkedin','google']"
+            [show]="5"
+            [size]="-1"
+            [title]="'Chuck Says'"
+            [description]="joke.value"
+            [url]="'http://www.icndb.com/'"
+            [autoSetMeta]="false"
+           ></share-buttons>
+          </p>
+</div>
+</div>
+
+<div class="col-md-3">
+  <!-- insert the joke form component -->
+    <app-joke-form (name)="getJokeWithName($event)"></app-joke-form>
+  </div>
+</div>
+</div>
+
+<hr>
+<!-- random jokes -->
+<h3>Random Jokes</h3>
+  <br>
+    <div class="card-deck">
+      <div class="card" *ngFor="let joke of jokes">
+        <img class="card-img-top" src="./assets/chuck.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+          {{joke.joke}}
+            <p class="card-text"></p>
+              <!-- <a href="#" class="btn btn-primary" (click)="refreshJokes()">Refresh</a> -->
+      </div>
+    </div>
+    
+</div>
+         

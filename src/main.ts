@@ -7,6 +7,8 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
+// import icons
+import './icons';
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

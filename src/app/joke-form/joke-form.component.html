@@ -1,0 +1,36 @@
+<h1>Find Joke</h1>
+<h5>Search joke by a character's name</h5>
+<div [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()" #jokeForm="ngForm">
+    <div class="form-group">
+      <label for="fname" class="mb-2 mr-sm-2">First Name</label>
+      <input type="text" class="form-control mb-2 mr-sm-2"  [(ngModel)]="firstname" name="fname"
+      #name="ngModel"  required>
+      <div [hidden]="name.valid || name.pristine"
+     class="alert alert-danger">
+ Firstname is required
+</div>
+    </div>
+
+    <div class="form-group">
+      <label for="lname" class="mb-2 mr-sm-2">Lastname</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="lastname" name="lname"#name="ngModel"  required>
+      <div [hidden]="name.valid || name.pristine"
+     class="alert alert-danger">
+ Lastname is required
+</div>
+    </div>
+
+    <button type="submit" class="btn btn-success mb-2" [disabled]="!jokeForm.form.valid" >
+      Find</button>
+  </form>
+</div>
+ <!-- show success message -->
+    <div [hidden]="!submitted" #alert class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert();submitted=false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Submitted successfully!</strong>
+   
+      </div>
+
